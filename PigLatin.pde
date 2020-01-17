@@ -36,9 +36,17 @@ public String pigLatin(String sWord)
   if (sWord.substring(0, 2).equals("qu")) {
     return sWord.substring(2) + "quay";
   }  
-  if (!sWord.substring(0,1).equals("a") && !sWord.substring(0, 1).equals("e") && !sWord.substring(0, 1).equals("i") && !sWord.substring(0, 1).equals("o") && !sWord.substring(0, 1).equals("u")) {
-   
-    return sWord.substring(0, sWord.length() -1) + "ay";
-  }  
-  return "ERROR";
+  
+  int count = 0;
+  for (int i = 0; i < sWord.length() - 2; i++) {
+    if (!sWord.substring(i,i + 1).equals("a") && !sWord.substring(i, i + 1).equals("e") && !sWord.substring(i, i + 1).equals("i") && !sWord.substring(i, i + 1).equals("o") && !sWord.substring(i, i + 1).equals("u")) {
+        count++;
+       if (sWord.substring(i + 1,i + 2).equals("a") || sWord.substring(i + 1, i + 2).equals("e") || sWord.substring(i + 1, i + 2).equals("i") || sWord.substring(i + 1, i + 2).equals("o") || sWord.substring(i + 1, i + 2).equals("u")) {
+         break;
+       }
+    }
+  }
+  return sWord.substring(count) + sWord.substring(0, count) + "ay";
+  
+
 }
